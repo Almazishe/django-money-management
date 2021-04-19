@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+
+{% block content %}
+
+<form class="mx-auto p-5 shadow rounded text-light" action="{% url 'register' %}" method="POST">
+  {% csrf_token %}
+  <h1>Registration</h1>
+
+  <div class="mb-3">
+    <label for="exampleInputusername1" class="form-label">Username</label>
+    <input type="text" class="form-control" name="username" id="exampleInputusername1" aria-describedby="usernameHelp" placeholder="Enter yor username">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputfirst_name1" class="form-label">First Name</label>
+    <input type="text" class="form-control" name="first_name" id="exampleInputfirst_name1" aria-describedby="first_nameHelp" placeholder="Enter yor first name">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputlast_name1" class="form-label">Last Name</label>
+    <input type="text" class="form-control" name="last_name" id="exampleInputlast_name1" aria-describedby="last_nameHelp" placeholder="Enter yor last name">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" name="password1" class="form-control" id="exampleInputPassword1"  placeholder="Enter yor password">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+    <input type="password" name="password2" class="form-control" id="exampleInputPassword1" placeholder="Re - enter yor password">
+  </div>
+
+  <button type="submit" class="btn btn-dark shadow">Submit</button>
+  
+
+</form>
+
+{% endblock %}

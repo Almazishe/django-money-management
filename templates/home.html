@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+<h1 class='text-light'>Счета:</h1>
+<div class='d-flex flex-nowrap'>
+    <a href="{% url 'create-bank' %}" class='btn btn-light shadow p-3 mx-2' title='Добавить новый банковский счет.'>
+        <h1>+</h1>
+    </a>
+    {% for bank in banks %}
+        <a  class='btn btn-light shadow px-3 mx-2 pt-3' title='Kaspi GOLD'>
+            <h5>{{ bank.name }}</h5>
+            <p class='m-0'>{{ bank.balance }} </p>
+        </a>
+    {% empty %}
+        <a  class='btn btn-light shadow px-3 mx-2 pt-3'>
+            <h5>Нет счетов</h5>
+            <p class='m-0'> создайте новый счет </p>
+        </a>
+    {% endfor %}
+</div>
+<div class="bg-success text-light shadow my-5 p-5">
+  <ul class="nav nav-tabs mb-3 " id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="operations-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Операции</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="transfers-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Переводы</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="debts-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Долги</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="operations-tab">
+        <a href="{% url 'create-operation' %}" class='btn btn-light shadow pt-3' title='Добавить новую операцию.'>
+            <p>Добавить операцию</p>
+        </a>
+        <table class="table text-light">
+            <thead>
+                <tr>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Сумма</th>
+                    <th scope="col">Счет</th>
+                    <th scope="col">Категория</th>
+                    <th scope="col">Описание</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for oper in operations%}
+                    <tr class="{% if oper.type == '-' %}bg-danger{% endif %}">
+                        <th scope="row">{{ oper.date }}</th>
+                        <td>{{ oper.amount }}</td>
+                        <td>{{ oper.bank.name }}</td>
+                        <td>{{ oper.category.name }}</td>
+                        <td>{{ oper.description }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="transfers-tab">
+        ...
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="debts-tab">
+    ...
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

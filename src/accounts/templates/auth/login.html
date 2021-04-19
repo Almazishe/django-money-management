@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block content %}
+
+<form class="mx-auto p-5 shadow rounded text-light" action="{% url 'login' %}" method="POST">
+  {% csrf_token %}
+  <h1>Login</h1>
+
+  <div class="mb-3">
+    <label for="exampleInputusername1" class="form-label">Username</label>
+    <input type="text" class="form-control" name="username" id="exampleInputusername1" aria-describedby="usernameHelp">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+  </div>
+
+  <button type="submit" class="btn btn-dark shadow">Submit</button>
+  
+
+</form>
+
+{% endblock %}
