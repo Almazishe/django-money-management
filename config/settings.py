@@ -19,7 +19,7 @@ SECRET_KEY = 'o#g=+f_q$@gr6a-e62nb_*erdtqn0%@-8+pwba*1_5u=23^jyn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'mm-almaz.herokuapp.com']
 
 
 # Application definition
