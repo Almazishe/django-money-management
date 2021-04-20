@@ -4,7 +4,7 @@ Money management app by Almaz Yessenyazov
 
 from pathlib import Path
 from django.contrib import messages
-
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -132,3 +132,7 @@ MESSAGE_TAGS = {
     messages.INFO: 'info',
     messages.SUCCESS: 'success'
 }
+
+
+
+django_heroku.settings(locals())
